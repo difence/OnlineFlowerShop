@@ -1,0 +1,67 @@
+\contentsline {chapter}{摘要}{I}{chapter*.2}%
+\contentsline {chapter}{\numberline {\zihao {-2}1\hspace {.3em}}引言}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}动机}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}要解决的问题}{1}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}通信方式}{1}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}架构方式}{2}{subsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.2.3}编程语言选择}{2}{subsection.1.2.3}%
+\contentsline {subsection}{\numberline {1.2.4}双端环境配置}{3}{subsection.1.2.4}%
+\contentsline {subsection}{\numberline {1.2.5}图形界面构建}{3}{subsection.1.2.5}%
+\contentsline {subsection}{\numberline {1.2.6}数据库设计}{4}{subsection.1.2.6}%
+\contentsline {chapter}{\numberline {\zihao {-2}2\hspace {.3em}}系统设计}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}系统总体框架}{5}{section.2.1}%
+\contentsline {section}{\numberline {2.2}系统总体流程}{5}{section.2.2}%
+\contentsline {section}{\numberline {2.3}登录}{6}{section.2.3}%
+\contentsline {section}{\numberline {2.4}注册}{6}{section.2.4}%
+\contentsline {section}{\numberline {2.5}文本发送}{7}{section.2.5}%
+\contentsline {section}{\numberline {2.6}文本接收}{7}{section.2.6}%
+\contentsline {section}{\numberline {2.7}图片传输}{7}{section.2.7}%
+\contentsline {section}{\numberline {2.8}消息记录}{8}{section.2.8}%
+\contentsline {section}{\numberline {2.9}云服务器}{8}{section.2.9}%
+\contentsline {chapter}{\numberline {\zihao {-2}3\hspace {.3em}}数据结构设计}{10}{chapter.3}%
+\contentsline {section}{\numberline {3.1}队列}{10}{section.3.1}%
+\contentsline {section}{\numberline {3.2}文本接收}{10}{section.3.2}%
+\contentsline {section}{\numberline {3.3}嵌套字}{10}{section.3.3}%
+\contentsline {chapter}{\numberline {\zihao {-2}4\hspace {.3em}}关键技术与系统实现}{11}{chapter.4}%
+\contentsline {section}{\numberline {4.1}登录}{11}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}功能技术}{11}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}实现}{11}{subsection.4.1.2}%
+\contentsline {section}{\numberline {4.2}注册}{12}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}功能技术}{12}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}实现}{12}{subsection.4.2.2}%
+\contentsline {section}{\numberline {4.3}文本发送}{13}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}功能技术}{13}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}实现}{14}{subsection.4.3.2}%
+\contentsline {section}{\numberline {4.4}文本接收}{14}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}功能技术}{14}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}实现}{15}{subsection.4.4.2}%
+\contentsline {section}{\numberline {4.5}图片收发}{16}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}功能技术}{16}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}实现}{16}{subsection.4.5.2}%
+\contentsline {section}{\numberline {4.6}消息记录}{17}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}存储}{17}{subsection.4.6.1}%
+\contentsline {subsection}{\numberline {4.6.2}读取}{17}{subsection.4.6.2}%
+\contentsline {section}{\numberline {4.7}多线程}{18}{section.4.7}%
+\contentsline {subsection}{\numberline {4.7.1}优点}{18}{subsection.4.7.1}%
+\contentsline {subsection}{\numberline {4.7.2}原理}{18}{subsection.4.7.2}%
+\contentsline {subsection}{\numberline {4.7.3}功能技术}{18}{subsection.4.7.3}%
+\contentsline {subsection}{\numberline {4.7.4}实现}{18}{subsection.4.7.4}%
+\contentsline {section}{\numberline {4.8}云服务器}{19}{section.4.8}%
+\contentsline {subsection}{\numberline {4.8.1}功能使用}{19}{subsection.4.8.1}%
+\contentsline {subsection}{\numberline {4.8.2}端口开放}{19}{subsection.4.8.2}%
+\contentsline {chapter}{\numberline {\zihao {-2}5\hspace {.3em}}系统运行结果}{20}{chapter.5}%
+\contentsline {section}{\numberline {5.1}运行环境}{20}{section.5.1}%
+\contentsline {section}{\numberline {5.2}运行与测试结果}{20}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}登录}{20}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}注册}{20}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}主界面}{21}{subsection.5.2.3}%
+\contentsline {subsection}{\numberline {5.2.4}多线程}{22}{subsection.5.2.4}%
+\contentsline {section}{\numberline {5.3}实验结果分析}{22}{section.5.3}%
+\contentsline {chapter}{\numberline {\zihao {-2}6\hspace {.3em}}调试和改进}{23}{chapter.6}%
+\contentsline {chapter}{\numberline {\zihao {-2}7\hspace {.3em}}心得和结论}{24}{chapter.7}%
+\contentsline {section}{\numberline {7.1}结论和体会}{24}{section.7.1}%
+\contentsline {section}{\numberline {7.2}进一步改进方向}{24}{section.7.2}%
+\contentsline {chapter}{参考文献}{25}{section*.27}%
+\contentsline {chapter}{\numberline {附录 A\hspace {.3em}}代码}{26}{appendix.A}%
+\contentsline {section}{\numberline {A.1}客户端}{26}{section.A.1}%
+\contentsline {section}{\numberline {A.2}客户端}{26}{section.A.2}%
