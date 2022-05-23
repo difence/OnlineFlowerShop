@@ -1,4 +1,5 @@
 import datetime
+import hashlib
 import json
 import logging
 import sys
@@ -131,7 +132,7 @@ def getNeteaseSongList(name):
     """
     把结果转化为json格式，提取需要的结果
     |
-    +|data
+    +|userInfo
     -+|result
     --+|songs
     """
@@ -225,3 +226,8 @@ def getNeteaseSongMessages(ids):
     """
 
     return resSheet
+
+
+def encodingPassowrd(s: str):
+    ss = s.encode('utf-8')
+    return hashlib.sha256(ss).hexdigest()
