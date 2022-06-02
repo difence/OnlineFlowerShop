@@ -8,7 +8,7 @@ import config
 import frontend
 
 
-class MainWindow(frontend.windowWidget.WindowWidget):
+class SolveOrderWindow(frontend.windowWidget.WindowWidget):
     def __init__(self, width, height, name, ids):
         super().__init__(width, height, name)
         self.ids = ids

@@ -52,7 +52,7 @@ class MainWindow(frontend.windowWidget.WindowWidget):
         else:
             return
 
-        sFw = frontend.showFlowerWindow.MainWindow(400, 300, '花详细信息', self.orderInfo[ids]['id'])
+        sFw = frontend.showFlowerWindow.ShowFlowerWindow(400, 300, '花详细信息', self.orderInfo[ids]['id'])
 
     def refreshButtonPress(self, *args):
         self.init()

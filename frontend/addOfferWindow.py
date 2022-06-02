@@ -5,10 +5,10 @@ import tkinter.messagebox
 import requests
 
 import config
-import frontend
+import frontend.windowWidget
 
 
-class MainWindow(frontend.windowWidget.WindowWidget):
+class AddOfferWindow(frontend.windowWidget.WindowWidget):
     def __init__(self, width, height, name):
         super().__init__(width, height, name)
         self.data = None

@@ -71,8 +71,9 @@ class AdminWindow(frontend.windowWidget.WindowWidget):
         else:
             return
 
-        sAF = frontend.showAdminFlowerWindow.MainWindow(400, 300, '订单详情信息：{}'.format(self.orderInfo[ids]['id']),
-                                                        self.orderInfo[ids])
+        sAF = frontend.showAdminFlowerWindow.ShowAdminFlowerWindow(400, 300,
+                                                                   '订单详情信息：{}'.format(self.orderInfo[ids]['id']),
+                                                                   self.orderInfo[ids])
 
     def offerInfoListboxPress(self, event):
         ids = self.offerInfoListbox.curselection()
@@ -81,11 +82,11 @@ class AdminWindow(frontend.windowWidget.WindowWidget):
         else:
             return
 
-        sOW = frontend.showOfferWindow.MainWindow(400, 300, '供应商详情信息：{}'.format(self.offerInfo[ids]['id']),
-                                                  self.offerInfo[ids])
+        sOW = frontend.showOfferWindow.ShowOfferWindow(400, 300, '供应商详情信息：{}'.format(self.offerInfo[ids]['id']),
+                                                       self.offerInfo[ids])
 
     def insertOfferButtonPress(self, *args):
-        aOW = frontend.addOfferWindow.MainWindow(400, 300, '添加供应商')
+        aOW = frontend.addOfferWindow.AddOfferWindow(400, 300, '添加供应商')
 
     def refreshButtonPress(self, *args):
         self.init()

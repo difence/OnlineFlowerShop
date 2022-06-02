@@ -7,7 +7,7 @@ import config
 import frontend
 
 
-class MainWindow(frontend.windowWidget.WindowWidget):
+class ShowAdminFlowerWindow(frontend.windowWidget.WindowWidget):
     def __init__(self, width, height, name, data):
         super().__init__(width, height, name)
         pprint.pprint(data)
@@ -32,6 +32,6 @@ class MainWindow(frontend.windowWidget.WindowWidget):
         self.window.mainloop()
 
     def orderStatusButtonPress(self, *args):
-        sow = frontend.solveOrderWindow.MainWindow(400, 300, '处理订单', self.ids)
+        sow = frontend.solveOrderWindow.SolveOrderWindow(400, 300, '处理订单', self.ids)
         self.window.destroy()
         pass

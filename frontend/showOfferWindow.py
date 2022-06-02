@@ -8,7 +8,7 @@ import config
 import frontend
 
 
-class MainWindow(frontend.windowWidget.WindowWidget):
+class ShowOfferWindow(frontend.windowWidget.WindowWidget):
     def __init__(self, width, height, name, data):
         super().__init__(width, height, name)
         self.data = None

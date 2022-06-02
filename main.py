@@ -1,6 +1,6 @@
 import threading
 
-import backend.controller
+import backend
 import frontend
 
 work = threading.Thread(target=backend.controller.run)
