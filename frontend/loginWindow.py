@@ -33,7 +33,7 @@ class LoginWindow(frontend.windowWidget.WindowWidget):
             self.window.destroy()
             auth = res['data']['auth']
             if auth == 0:
-                mw = frontend.mainWindow.MainWindow(1440, 900, '杂货商de网上花店', res['data']['id'])
+                mw = frontend.userWindow.UserWindow(800, 900, '杂货商de网上花店', res['data']['id'])
             else:
                 aw = frontend.adminWindow.AdminWindow(1440, 900, '后台管理员', res['data']['id'])
         else:

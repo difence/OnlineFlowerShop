@@ -114,6 +114,42 @@ def flowerGetById():
     return res
 
 
+@app.route('/flower/insert', methods=['POST', 'GET'])
+def flowerInsert():
+    if request.method == 'POST':
+        data = request.values.to_dict()
+    else:
+        data = request.args.to_dict()
+    res = backend.service.flowerService.insert(sqlClient, data)
+    return res
+
+
+@app.route('/flower/updateNumberById', methods=['POST', 'GET'])
+def flowerUpdateNumberById():
+    if request.method == 'POST':
+        data = request.values.to_dict()
+    else:
+        data = request.args.to_dict()
+    res = backend.service.flowerService.updateNumberById(sqlClient, data)
+    return res
+
+
+@app.route('/flower/getAll', methods=['POST', 'GET'])
+def flowerGetAll():
+    res = backend.service.flowerService.getAll(sqlClient)
+    return res
+
+
+@app.route('/flower/buy', methods=['POST', 'GET'])
+def flowerBuy():
+    if request.method == 'POST':
+        data = request.values.to_dict()
+    else:
+        data = request.args.to_dict()
+    res = backend.service.flowerService.buy(sqlClient, data)
+    return res
+
+
 @app.route('/offer/getById', methods=['POST', 'GET'])
 def offerGetById():
     if request.method == 'POST':
@@ -126,7 +162,7 @@ def offerGetById():
 
 @app.route('/offer/getAll', methods=['POST', 'GET'])
 def offerGetAll():
-    res = backend.service.offerService.getOfferAll(sqlClient)
+    res = backend.service.offerService.getAll(sqlClient)
     return res
 
 

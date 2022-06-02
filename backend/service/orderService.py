@@ -1,3 +1,4 @@
+import datetime
 import json
 
 import backend.service.flowerService
@@ -39,6 +40,19 @@ def getOrderById(sqlClient: tool.sql.sqlClient, data):
                'data': toOutputDTO(sqlClient, sqlClient.searchInfo('order_info', {'id': ids}))}
     else:
         res = {'code': 0, 'msg': 'id不存在', 'data': None}
+    return json.dumps(res, ensure_ascii=False)
+
+
+def insert(sqlClient: tool.sql.sqlClient, attrs: dict):
+    res = {"code": 1, "data": '添加成功', "msg": None}
+
+    sqlClient.insertInfo('order_info',
+                         {'id': tool.fun.getTimeStamp(),
+                          'user_id': attrs['user_id'],
+                          'number': attrs['bucket'],
+                          'bucket_id': attrs['bucket_id'],
+                          "create_date": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                          "status": 1})
     return json.dumps(res, ensure_ascii=False)
 
 

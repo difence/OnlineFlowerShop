@@ -13,7 +13,7 @@ def getOfferById(sqlClient: tool.sql.sqlClient, data):
     return json.dumps(res, ensure_ascii=False)
 
 
-def getOfferAll(sqlClient: tool.sql.sqlClient):
+def getAll(sqlClient: tool.sql.sqlClient):
     sheet = sqlClient.searchInfo("offer_info", mult=True)
     result = []
     for i in range(len(sheet)):
