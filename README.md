@@ -14,4 +14,7 @@ pip install requests
 pip install flask
 pip install pymssql
 pip install minio
+pip install pillow
+pip install opencv-python
+pip install pandas
 ```
