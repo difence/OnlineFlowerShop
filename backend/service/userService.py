@@ -17,7 +17,7 @@ def login(sqlClient: tool.sql.sqlClient, attrs: dict):
     data = sqlClient.isExist("user_info", {"account": account, "password": password})
     if data:
         ids = sqlClient.searchInfo("user_info", {"account": account})
-        res["data"] = {"id": ids[0]}
+        res["data"] = {"id": ids[0], 'auth': ids[9]}
         res["msg"] = "登录成功"
         res["code"] = 1
     else:
@@ -55,7 +55,8 @@ def register(sqlClient: tool.sql.sqlClient, attrs: dict):
                               "score_sum": 0,
                               "birth": bir,
                               "create_date": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                              "update_date": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")})
+                              "update_date": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                              "auth": 0})
         res["msg"] = "注册成功"
         res["code"] = 1
         res["data"] = {"auth": 0}
@@ -73,7 +74,8 @@ def getElemByAccount(sqlClient: tool.sql.sqlClient, attrs: dict):
              "tel": sheet[3].replace("" "", ""),
              "score": sheet[4],
              "score_sum": sheet[5],
-             "birth": sheet[6].strftime("%Y-%m-%d %H:%M:%S")}
+             "birth": sheet[6].strftime("%Y-%m-%d %H:%M:%S"),
+             "auth": sheet[9]}
         res["data"] = s
         res["code"] = 1
         res["msg"] = "成功"
@@ -93,7 +95,8 @@ def getElemById(sqlClient: tool.sql.sqlClient, attrs: dict):
              "tel": sheet[3].replace(" ", ""),
              "score": sheet[4],
              "score_sum": sheet[5],
-             "birth": sheet[6].strftime("%Y-%m-%d %H:%M:%S")}
+             "birth": sheet[6].strftime("%Y-%m-%d %H:%M:%S"),
+             "auth": sheet[9]}
         res["data"] = s
         res["code"] = 1
         res["msg"] = "成功"

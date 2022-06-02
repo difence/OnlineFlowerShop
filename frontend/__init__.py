@@ -1,6 +1,11 @@
+import frontend.addOfferWindow
 import frontend.adminWindow
 import frontend.forgetWindow
 import frontend.loginWindow
 import frontend.mainWindow
 import frontend.registerWindow
+import frontend.showAdminFlowerWindow
+import frontend.showFlowerWindow
+import frontend.showOfferWindow
+import frontend.solveOrderWindow
 import frontend.windowWidget

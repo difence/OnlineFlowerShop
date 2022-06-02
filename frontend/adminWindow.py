@@ -1,10 +1,7 @@
 import json
-import os
+import pprint
 import tkinter as tk
-import tkinter.filedialog
-import tkinter.messagebox
 
-import pandas as pd
 import requests
 
 import config
@@ -12,34 +9,83 @@ import frontend.windowWidget
 
 
 class AdminWindow(frontend.windowWidget.WindowWidget):
-    def __init__(self, width, height, name):
+    def __init__(self, width, height, name, ids):
         super().__init__(width, height, name)
 
-        self.userInfoUrl = '{}/{}'.format(config.httpUrl, 'admin/userInfo')
-        self.userFileInfoUrl = '{}/{}'.format(config.httpUrl, 'admin/userFileInfo')
+        self.offerInfo = None
+        self.userId = ids.replace(' ', '')
+        self.userAccount = None
+        self.userInfo = None
+        self.orderInfo = None
 
-        self.userInfoButton = self.makeButton((20, 20, 100, 40), '查询用户信息', self.userInfoButtonPress)
-        self.userInfoEntry = self.makeEntry((140, 20, 200, 40))
+        self.accountLabelText = self.makeLabel((20, 20, 60, 40), text='账号：', color='lightblue')
+        self.accountLabel = self.makeLabel((100, 20, 140, 40))
+        self.userIdLabelText = self.makeLabel((20, 80, 60, 40), text='id：', color='lightblue')
+        self.userIdLabel = self.makeLabel((100, 80, 140, 40))
 
-        self.userFileInfoButton = self.makeButton((20, 80, 100, 40), '查询用户文件', self.userFileInfoButtonPress)
-        self.userFileInfoEntry = self.makeEntry((140, 80, 200, 40))
+        self.orderInfoLabelText = self.makeLabel((20, 140, 220, 40), text='订单统计')
+        self.refreshButton = self.makeButton((260, 140, 100, 40), text='刷新', command=self.refreshButtonPress)
 
+        self.orderInfoListbox = self.makeListbox((20, 200, 400, 680), self.orderInfoListboxPress)
+
+        self.offerInfoLabelText = self.makeLabel((440, 140, 220, 40), text='供应商统计')
+        self.refreshButton = self.makeButton((680, 140, 100, 40), text='添加供应商', command=self.insertOfferButtonPress)
+        self.offerInfoListbox = self.makeListbox((440, 200, 400, 680), self.offerInfoListboxPress)
+
+        self.init()
         self.window.mainloop()
 
-    def userInfoButtonPress(self, *args):
-        res = json.loads(requests.post(self.userInfoUrl, data={'user_account': self.userInfoEntry.get()}).text)[
-            'userInfo']
-        print(res)
-        data = '用户id：{}\n用户名：{}\n用户加密密码：{}'.format(res['user_id'], res['user_account'], res['user_password'])
+    def init(self):
+        userInfoData = requests.post(config.userGetByIdUrl, data={'id': self.userId}).content
+        userInfoData = json.loads(userInfoData)
 
-        tk.messagebox.showinfo('用户信息', data)
+        self.userInfo = userInfoData['data']
+        self.userAccount = self.userInfo['account'].replace(' ', '')
+        self.accountLabel.configure(text=self.userAccount)
+        self.userIdLabel.configure(text=self.userId)
 
-    def userFileInfoButtonPress(self, *args):
-        path = tk.filedialog.askdirectory()
-        res = json.loads(requests.post(self.userFileInfoUrl, data={'user_account': self.userFileInfoEntry.get()}).text)[
-            'userInfo']
+        orderInfoData = requests.post(config.orderGetUserOrderById).content
+        orderInfoData = json.loads(orderInfoData)
+        self.orderInfo = orderInfoData['data']
+        self.orderInfoListbox.delete(0, tk.END)
+        statusDict = {0: '已完成', 1: '配送中', 2: '工单', 3: '已退款',
+                      None: '异常'}
+        for i in self.orderInfo:
+            s = f"名字： {i['bucket_id']['name']} 数量：{i['number']} 价格：{i['bucket_id']['price']} 状态：{statusDict[i['status']]} 购买者：{i['user_id']['account']}"
+            self.orderInfoListbox.insert(0, s)
 
-        df = pd.DataFrame(res)
-        df.to_csv('{}/{}.csv'.format(path, self.userFileInfoEntry.get()), index=False, encoding='utf-8')
+        offerInfoData = requests.post(config.offerGetAll).content.decode('utf-8')
+        offerInfoData = json.loads(offerInfoData)
+        self.offerInfo = offerInfoData['data']
+        pprint.pprint(self.offerInfo)
 
-        os.system('{}/{}.csv'.format(path, self.userFileInfoEntry.get()))
+        self.offerInfoListbox.delete(0, tk.END)
+        for i in self.offerInfo:
+            s = f"id： {i['id']} 供应商： {i['name']}"
+            self.offerInfoListbox.insert(0, s)
+
+    def orderInfoListboxPress(self, event):
+        ids = self.orderInfoListbox.curselection()
+        if len(ids) > 0:
+            ids = ids[0]
+        else:
+            return
+
+        sAF = frontend.showAdminFlowerWindow.MainWindow(400, 300, '订单详情信息：{}'.format(self.orderInfo[ids]['id']),
+                                                        self.orderInfo[ids])
+
+    def offerInfoListboxPress(self, event):
+        ids = self.offerInfoListbox.curselection()
+        if len(ids) > 0:
+            ids = ids[0]
+        else:
+            return
+
+        sOW = frontend.showOfferWindow.MainWindow(400, 300, '供应商详情信息：{}'.format(self.offerInfo[ids]['id']),
+                                                  self.offerInfo[ids])
+
+    def insertOfferButtonPress(self, *args):
+        aOW = frontend.addOfferWindow.MainWindow(400, 300, '添加供应商')
+
+    def refreshButtonPress(self, *args):
+        self.init()

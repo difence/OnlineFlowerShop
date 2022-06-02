@@ -75,12 +75,32 @@ def userGetByAccount():
 
 
 @app.route('/order/getUserOrderById', methods=['POST', 'GET'])
-def userGetUserOrderById():
+def orderGetUserOrderById():
     if request.method == 'POST':
         data = request.values.to_dict()
     else:
         data = request.args.to_dict()
     res = backend.service.orderService.getUserOrderById(sqlClient, data)
+    return res
+
+
+@app.route('/order/updateStatusById', methods=['POST', 'GET'])
+def orderUpdateOrderStatusById():
+    if request.method == 'POST':
+        data = request.values.to_dict()
+    else:
+        data = request.args.to_dict()
+    res = backend.service.orderService.updateOrderStatusById(sqlClient, data)
+    return res
+
+
+@app.route('/order/getOrderById', methods=['POST', 'GET'])
+def orderGetOrderById():
+    if request.method == 'POST':
+        data = request.values.to_dict()
+    else:
+        data = request.args.to_dict()
+    res = backend.service.orderService.getOrderById(sqlClient, data)
     return res
 
 
@@ -91,6 +111,52 @@ def flowerGetById():
     else:
         data = request.args.to_dict()
     res = backend.service.flowerService.getElemById(sqlClient, data)
+    return res
+
+
+@app.route('/offer/getById', methods=['POST', 'GET'])
+def offerGetById():
+    if request.method == 'POST':
+        data = request.values.to_dict()
+    else:
+        data = request.args.to_dict()
+    res = backend.service.offerService.getOfferById(sqlClient, data)
+    return res
+
+
+@app.route('/offer/getAll', methods=['POST', 'GET'])
+def offerGetAll():
+    res = backend.service.offerService.getOfferAll(sqlClient)
+    return res
+
+
+@app.route('/offer/updateById', methods=['POST', 'GET'])
+def offerUpdateById():
+    if request.method == 'POST':
+        data = request.values.to_dict()
+    else:
+        data = request.args.to_dict()
+    res = backend.service.offerService.updateById(sqlClient, data)
+    return res
+
+
+@app.route('/offer/removeById', methods=['POST', 'GET'])
+def offerRemoveById():
+    if request.method == 'POST':
+        data = request.values.to_dict()
+    else:
+        data = request.args.to_dict()
+    res = backend.service.offerService.removeById(sqlClient, data)
+    return res
+
+
+@app.route('/offer/insert', methods=['POST', 'GET'])
+def offerInsert():
+    if request.method == 'POST':
+        data = request.values.to_dict()
+    else:
+        data = request.args.to_dict()
+    res = backend.service.offerService.insert(sqlClient, data)
     return res
 
 

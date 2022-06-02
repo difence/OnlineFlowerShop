@@ -31,7 +31,11 @@ class LoginWindow(frontend.windowWidget.WindowWidget):
             tkinter.messagebox.showinfo('登录', res['msg'])
             name = self.accountEntry.get()
             self.window.destroy()
-            mw = frontend.mainWindow.MainWindow(1440, 900, '杂货商de网上花店', res['data']['id'])
+            auth = res['data']['auth']
+            if auth == 0:
+                mw = frontend.mainWindow.MainWindow(1440, 900, '杂货商de网上花店', res['data']['id'])
+            else:
+                aw = frontend.adminWindow.AdminWindow(1440, 900, '后台管理员', res['data']['id'])
         else:
             tkinter.messagebox.showwarning('登录', res['msg'])
 

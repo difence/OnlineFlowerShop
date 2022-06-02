@@ -5,11 +5,9 @@ import tool
 
 
 def getElemById(sqlClient: tool.sql.sqlClient, attrs: dict):
-    res = {"code": 0, "data": None, "msg": None}
+    res = {"code": 1, "data": None, "msg": '查找成功'}
     sheet = sqlClient.searchInfo("flower_bucket", {"id": attrs["id"]})
-    res['code'] = 1
     res['data'] = toOutputDTO(sqlClient, sheet)
-    res['msg'] = '查找成功'
     return json.dumps(res, ensure_ascii=False)
 
 

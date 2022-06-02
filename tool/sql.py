@@ -44,7 +44,7 @@ class sqlClient:
         self.connection.commit()
         tool.fun.logFormat(tool.fun.INFO, "在表 {} 插入数据 {}".format(table, value))
 
-    def delInfo(self, table, _id):
+    def removeInfo(self, table, _id):
         value = 'delete from {}.dbo.{} where id = {}'.format(self.db, table, _id)
         cur = self.connection.cursor()
         cur.execute(value)
@@ -100,13 +100,13 @@ class sqlClient:
     def update(self, table, attrs: dict, val: dict):
         att = ''
         for i in attrs:
-            att += '{} = \'{}\' and'.format(i, attrs[i])
-        att = att[:-3]
+            att += '{} = \'{}\' , '.format(i, attrs[i])
+        att = att[:-2]
 
         valu = ''
         for i in val:
-            valu += '{} = \'{}\' and'.format(i, val[i])
-        valu = valu[:-3]
+            valu += '{} = \'{}\' , '.format(i, val[i])
+        valu = valu[:-2]
 
         value = 'update {}.dbo.{} set {} where {}'.format(self.db, table, valu, att)
         cur = self.connection.cursor()

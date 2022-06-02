@@ -21,5 +21,13 @@ userGetByIdUrl = '{}/{}'.format(httpUrl, 'user/getById')
 userGetByAccountUrl = '{}/{}'.format(httpUrl, 'user/getByAccount')
 
 orderGetUserOrderById = '{}/{}'.format(httpUrl, 'order/getUserOrderById')
+orderUpdateStatusById = '{}/{}'.format(httpUrl, 'order/updateStatusById')
+orderGetOrderById = '{}/{}'.format(httpUrl, 'order/getOrderById')
+
+offerGetById = '{}/{}'.format(httpUrl, 'offer/getById')
+offerGetAll = '{}/{}'.format(httpUrl, 'offer/getAll')
+offerUpdateById = '{}/{}'.format(httpUrl, 'offer/updateById')
+offerRemoveById = '{}/{}'.format(httpUrl, 'offer/removeById')
+offerInsert = '{}/{}'.format(httpUrl, 'offer/insert')
 
 bucketGetById = '{}/{}'.format(httpUrl, 'flower/getById')
