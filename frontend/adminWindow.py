@@ -92,7 +92,7 @@ class AdminWindow(frontend.windowWidget.WindowWidget):
 
         sAF = frontend.showAdminFlowerWindow.ShowAdminFlowerWindow(400, 300,
                                                                    '订单详情信息：{}'.format(self.orderInfo[ids]['id']),
-                                                                   self.orderInfo[ids])
+                                                                   self.orderInfo[ids], self.userId)
 
     def offerInfoListboxPress(self, event):
         ids = self.offerInfoListbox.curselection()
@@ -112,7 +112,7 @@ class AdminWindow(frontend.windowWidget.WindowWidget):
 
     def insertFlowerButtonPress(self, *args):
 
-        aFW = frontend.addFlowerWindow.AddFlowerWindow(460, 520, '添加花卉')
+        aFW = frontend.addFlowerWindow.AddFlowerWindow(400, 620, '添加花卉', self.userId, self.offerInfo)
         pass
 
     def flowerInfoListboxPress(self, event):
@@ -122,8 +122,8 @@ class AdminWindow(frontend.windowWidget.WindowWidget):
         else:
             return
 
-        sOW = frontend.updateFlowerWindow.UpdateFlowerWindow(400, 520, '修改花卉：{}'.format(self.flowerInfo[ids]['id']),
-                                                             self.flowerInfo[ids])
+        sOW = frontend.updateFlowerWindow.UpdateFlowerWindow(400, 620, '修改花卉：{}'.format(self.flowerInfo[ids]['id']),
+                                                             self.flowerInfo[ids], self.userId)
 
     def show(self, *args):
         d1 = self.offerInfo

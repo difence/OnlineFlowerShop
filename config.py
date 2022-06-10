@@ -12,7 +12,7 @@ minioIp = '47.100.93.63'
 minioPort = '9090'
 minioAccount = 'admin'
 minioPassword = 'admin123456'
-minioBucket = 'editor'
+minioBucket = 'flower'
 
 userLoginUrl = '{}/{}'.format(httpUrl, 'user/login')
 userRegisterUrl = '{}/{}'.format(httpUrl, 'user/register')
@@ -35,3 +35,7 @@ flowerGetAll = '{}/{}'.format(httpUrl, 'flower/getAll')
 flowerInsert = '{}/{}'.format(httpUrl, 'flower/insert')
 flowerUpdateNumberById = '{}/{}'.format(httpUrl, 'flower/updateNumberById')
 flowerBuy = '{}/{}'.format(httpUrl, 'flower/buy')
+flowerUpdateAttsById = '{}/{}'.format(httpUrl, 'flower/updateAttsById')
+
+fileDownloadById = '{}/{}'.format(httpUrl, 'file/downloadById')
+fileUpload = '{}/{}'.format(httpUrl, 'file/upload')

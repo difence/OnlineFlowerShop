@@ -78,8 +78,8 @@ class UserWindow(frontend.windowWidget.WindowWidget):
         else:
             return
 
-        sFW = frontend.buyFlowerWindow.UpdateFlowerWindow(400, 520, '购买花卉：{}'.format(self.flowerInfo[ids]['id']),
-                                                          self.flowerInfo[ids], self.userId)
+        sFW = frontend.buyFlowerWindow.BuyFlowerWindow(400, 520, '购买花卉：{}'.format(self.flowerInfo[ids]['id']),
+                                                       self.flowerInfo[ids], self.userId)
 
     def refreshButtonPress(self, *args):
         self.init()

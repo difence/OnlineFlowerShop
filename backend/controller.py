@@ -134,6 +134,16 @@ def flowerUpdateNumberById():
     return res
 
 
+@app.route('/flower/updateAttsById', methods=['POST', 'GET'])
+def flowerUpdateAttsById():
+    if request.method == 'POST':
+        data = request.values.to_dict()
+    else:
+        data = request.args.to_dict()
+    res = backend.service.flowerService.updateAttsById(sqlClient, data)
+    return res
+
+
 @app.route('/flower/getAll', methods=['POST', 'GET'])
 def flowerGetAll():
     res = backend.service.flowerService.getAll(sqlClient)
@@ -193,6 +203,26 @@ def offerInsert():
     else:
         data = request.args.to_dict()
     res = backend.service.offerService.insert(sqlClient, data)
+    return res
+
+
+@app.route('/file/downloadById', methods=['POST', 'GET'])
+def fileDownloadById():
+    if request.method == 'POST':
+        data = request.values.to_dict()
+    else:
+        data = request.args.to_dict()
+    res = backend.service.fileService.download(minioClient, sqlClient, data)
+    return res
+
+
+@app.route('/file/upload', methods=['POST', 'GET'])
+def fileUpload():
+    if request.method == 'POST':
+        data = request.values.to_dict()
+    else:
+        data = request.args.to_dict()
+    res = backend.service.fileService.upload(minioClient, sqlClient, data)
     return res
 
 

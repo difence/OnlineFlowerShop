@@ -10,7 +10,7 @@ def upload(minioClient: tool.mio.minioClient, mysqlClient: tool.sql.sqlClient, a
 
     sheet = {"id": tool.fun.getTimeStamp(),
              "update_id": attrs["update_id"],
-             "update_date": datetime.datetime.now(),
+             "update_date": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
              "name": attrs["name"],
              "type": attrs["type"],
              "tname": attrs["tname"]}
@@ -24,7 +24,7 @@ def upload(minioClient: tool.mio.minioClient, mysqlClient: tool.sql.sqlClient, a
 
 def download(minioClient: tool.mio.minioClient, sqlClient: tool.sql.sqlClient, attrs: dict):
     res = {"code": 0, "data": None, "msg": None}
-    data = json.loads(getElemById(sqlClient, {"id": attrs["id"]}))
+    data = json.loads(getElemById(sqlClient, {"id": attrs["id"]}))["data"]
     url = minioClient.downloadFile(data["id"], data["type"])
     res["data"] = {"url": url, "data": data}
     res["code"] = 1

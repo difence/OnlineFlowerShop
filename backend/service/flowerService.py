@@ -68,6 +68,12 @@ def updateNumberById(sqlClient: tool.sql.sqlClient, attrs: dict):
     return json.dumps(res, ensure_ascii=False)
 
 
+def updateAttsById(sqlClient: tool.sql.sqlClient, attrs: dict):
+    res = {"code": 1, "data": '添加成功', "msg": None}
+    sqlClient.update('flower_bucket', {'id': attrs['id']}, {'attachment_ids': attrs['attachment_ids']})
+    return json.dumps(res, ensure_ascii=False)
+
+
 def toOutputDTO(sheet):
     res = {"id": sheet[0].replace(" ", ""),
            "name": sheet[1],
@@ -77,7 +83,7 @@ def toOutputDTO(sheet):
            "msg": sheet[5],
            "due_date": sheet[6].strftime("%Y-%m-%d %H:%M:%S"),
            "price": sheet[7],
-           "attachment_ids": sheet[8].split(','),
+           "attachment_ids": sheet[8].replace(" ", '').split(','),
            "create_date": sheet[9].strftime("%Y-%m-%d %H:%M:%S"),
            "update_date": sheet[10].strftime("%Y-%m-%d %H:%M:%S")}
     return res

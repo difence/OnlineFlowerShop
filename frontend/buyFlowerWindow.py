@@ -1,17 +1,21 @@
 import json
+import os
 import tkinter as tk
 import tkinter.messagebox
 
 import requests
 
 import config
-import frontend.windowWidget
+import frontend.windowTopLevel
+import tool
 
 
-class UpdateFlowerWindow(frontend.windowWidget.WindowWidget):
+class BuyFlowerWindow(frontend.windowTopLevel.WindowTopLevel):
     def __init__(self, width, height, name, data, userId):
         super().__init__(width, height, name)
+        self.pic = None
         self.ids = data['id']
+        self.data = data
         self.userId = userId
         self.makeLabel((20, 20, 200, 40), '花名：{}'.format(data['name']))
 
@@ -27,7 +31,11 @@ class UpdateFlowerWindow(frontend.windowWidget.WindowWidget):
 
         self.makeLabel((20, 320, 200, 40), '售价：{}'.format(data['price']))
 
+        self.flowerLabel = self.makeLabel((240, 20, 80, 80))
+
         self.insertButton = self.makeButton((240, 400, 100, 40), '购买', self.updateButtonPress)
+
+        self.initPic()
 
         self.window.mainloop()
 
@@ -50,3 +58,18 @@ class UpdateFlowerWindow(frontend.windowWidget.WindowWidget):
         elif int(res['code']) == 0:
             tk.messagebox.showinfo('购买', '购买失败')
             self.window.destroy()
+
+    def initPic(self):
+        try:
+            picId = self.data['attachment_ids']
+            res = requests.post(config.fileDownloadById, data={'id': picId}).content.decode('utf-8')
+            res = json.loads(res)['data']['url']
+            pic = requests.get(res, data={'id': picId}).content
+            with open('./temp.jpg', 'bw') as f:
+                f.write(pic)
+            self.pic = tool.fun.pic2TKpic(f'./temp.jpg', (80, 80))
+            self.flowerLabel.configure(image=self.pic)
+            if os.path.exists(f'./temp.jpg'):
+                os.remove(f'./temp.jpg')
+        except:
+            pass
