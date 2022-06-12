@@ -14,7 +14,6 @@ def userInfo(mysqlClient: tool.sql.sqlClient, attrs: dict):
 
 def userFileInfo(mysqlClient: tool.sql.sqlClient, attrs: dict):
     sheet = mysqlClient.searchInfo("file_info", {"user_name": attrs["user_account"]}, mult=True)
-    print(attrs)
     result = []
     for i in range(len(sheet)):
         dt = {"file_id": sheet[i][0],

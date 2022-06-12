@@ -58,7 +58,6 @@ class AddFlowerWindow(frontend.windowTopLevel.WindowTopLevel):
         name = self.nameEntry.get()
         color = self.colorEntry.get()
         offer = self.offerCombobox.get()
-        print(offer)
         bucket = self.bucketEntry.get()
         msg = self.msgEntry.get()
         due = self.dueEntry.get()

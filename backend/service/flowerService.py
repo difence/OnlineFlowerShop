@@ -1,6 +1,5 @@
 import datetime
 import json
-import pprint
 
 import backend.service.fileService
 import tool
@@ -27,12 +26,10 @@ def buy(sqlClient: tool.sql.sqlClient, attrs: dict):
     ids = attrs['id']
     number = int(attrs['bucket'])
     user_id = attrs['user_id']
-
     sheet = sqlClient.isExist('flower_bucket', {'id': ids})
     if sheet:
         sheet = sqlClient.searchInfo('flower_bucket', {'id': ids})
         data = toOutputDTO(sheet)
-        pprint.pprint(data)
     else:
         return json.dumps({"code": 0, "data": None, "msg": '花卉不存在'}, ensure_ascii=False)
 

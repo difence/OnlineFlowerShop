@@ -41,12 +41,12 @@ class BuyFlowerWindow(frontend.windowTopLevel.WindowTopLevel):
 
     def updateButtonPress(self, *args):
         bucket = self.bucketEntry.get('0.0', tk.END)[:-1]
-        res = json.loads(
-            requests.post(config.flowerBuy,
+        a = requests.post(config.flowerBuy,
                           data={'id': self.ids,
                                 'user_id': self.userId,
                                 'bucket': bucket}).content.decode(
-                'utf-8'))
+            'utf-8')
+        res = json.loads(a)
         if int(res['code']) == 1:
             tk.messagebox.showinfo('购买', '购买成功')
             self.window.destroy()
